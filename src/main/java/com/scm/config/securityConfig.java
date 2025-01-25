@@ -40,6 +40,9 @@ public class securityConfig {
     @Autowired
     private OAuthAuthenticationSuccessHandler handler;
 
+    @Autowired
+    private AuthFailureHandler authFailureHandler;
+
 
     //configuratuon of authentoication provider spring security
     @Bean
@@ -69,10 +72,13 @@ public class securityConfig {
 
             formLogin.loginPage("/login");
             formLogin.loginProcessingUrl("/authenticate");
-            formLogin.successForwardUrl("/user/dashboard");
+            formLogin.successForwardUrl("/user/profile");
 //            formLogin.failureForwardUrl("/login?error=true");
             formLogin.usernameParameter("emailId");
             formLogin.passwordParameter("password");
+
+
+            formLogin.failureHandler(authFailureHandler);
 
         });
 

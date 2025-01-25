@@ -1,10 +1,19 @@
 package com.scm.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Contact {
 
@@ -22,7 +31,10 @@ public class Contact {
     private String linkedInLink;
     //private List<String> socialLinks=new ArrayList<>();
 
+    private String cloudinaryImagePublicId;
+
     @ManyToOne
+    @JsonIgnore
     private User user;
 
     @OneToMany(mappedBy = "contact", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
