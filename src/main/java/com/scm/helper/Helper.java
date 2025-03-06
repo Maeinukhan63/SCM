@@ -41,4 +41,14 @@ public class Helper {
         }
 
     }
+
+
+    public  static String getLinkForEmailVerificatiton(String emailToken) {
+
+        //ye to sirf error hatane k liye returnkia h kaam to ismebaaki h
+
+        String link= "http://localhost:8080/auth/verify-email?token="+emailToken;
+       return link;
+
+    }
 }
